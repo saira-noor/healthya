@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1, h2, h3, h4, h5, h6 {
+    @apply leading-tight tracking-tight lg:font-serif;
+  }
+
+.arrow-icon {
+    transition: transform 0.3s ease; /* Smooth transition for rotation */
+}
+
+/* Rotate the arrow when the parent li has the 'active' class */
+.menu-item.active .arrow-icon {
+    transform: rotate(180deg); /* Rotate arrow to point upwards */
+}
+
+/* Initially hide the submenu */
+.submenu {
+    display: none;
+    margin-top: 0.5rem;
+    padding-left: 1rem;
+}
+
+/* Show the submenu when 'active' class is applied */
+.menu-item.active .submenu {
+    display: block;
+}
