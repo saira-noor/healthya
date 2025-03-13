@@ -60,10 +60,7 @@ function toggleFAQ(faqItem) {
 
     // Change text color of the title when clicked
     title.classList.toggle('text-blueLink');
-    title.classList.toggle('text-[#0F759D]');
-
-    //title.classList.toggle('text-[#00A3A3]');
-    //title.classList.toggle('text-[#0F759D]');
+    title.classList.toggle('text-customBlue');
     
 
   }
