@@ -61,7 +61,32 @@ function toggleFAQ(faqItem) {
     // Change text color of the title when clicked
     title.classList.toggle('text-blueLink');
     title.classList.toggle('text-customBlue');
-    
-
   }
+
+  const cardsContainer = document.querySelector('.lg:hidden'); // Select the container for the mobile slider
+  let isMouseDown = false;
+  let startX;
+  let scrollLeft;
+
+  cardsContainer.addEventListener('mousedown', (e) => { // Mouse down event to start dragging
+    isMouseDown = true;
+    startX = e.pageX - cardsContainer.offsetLeft; // Get the initial mouse position
+    scrollLeft = cardsContainer.scrollLeft; // Get the current scroll position
+  });
+
+  cardsContainer.addEventListener('mouseleave', () => { // When mouse leaves, stop dragging
+    isMouseDown = false;
+  });
+
+  cardsContainer.addEventListener('mouseup', () => { // When mouse is released, stop dragging
+    isMouseDown = false;
+  });
+
+  cardsContainer.addEventListener('mousemove', (e) => { // When mouse moves, scroll horizontally
+    if (!isMouseDown) return;
+    e.preventDefault(); // Prevent default dragging behavior
+    const x = e.pageX - cardsContainer.offsetLeft; // Get the current mouse position
+    const walk = (x - startX) * 3; // Scroll speed, increase this for faster scrolling
+    cardsContainer.scrollLeft = scrollLeft - walk; // Move the scroll position
+  });
 
